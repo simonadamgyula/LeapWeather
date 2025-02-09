@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 1.5em;
+    overflow: hidden;
+    background-color: #003200;
+}
+
+.nav li {
+    float: left;
+}
+
+.nav li a {
+    display: block;
+    padding: 0 1em;
+    color: white;
+    text-decoration: none;
+    font-size: 2.3em;
+}
+.navbar_frog {
+    object-fit: contain;
+    height: 3.5em;
+}
+
+
+
