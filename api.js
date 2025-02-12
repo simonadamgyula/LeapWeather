@@ -1,4 +1,12 @@
-const apiUrl = "https://api.open-meteo.com/v1/forecast";
+/**
+ * @param {string} subRoute 
+ * @returns {string}
+ */
+function getApiRoute(subRoute) {
+    const apiUrl = "https://api.open-meteo.com/v1/";
+    return apiUrl + subRoute;
+}
+
 
 /**
  * 
@@ -14,10 +22,11 @@ function objectToGetParams(params) {
 /**
  * 
  * @param {string} params 
+ * @param {string} subRoute 
  * @returns {Promise<Response>}
  */
-function sendApiRequest(params) {
-    let url = `${apiUrl}?${objectToGetParams(params)}`;
+function sendApiRequest(params, subRoute) {
+    let url = `${getApiRoute(subRoute)}?${objectToGetParams(params)}`;
     return fetch(url);
 }
 
@@ -56,11 +65,12 @@ function getWeatherForDay(location, day, weatherVariables) {
         requestOptions = { ...requestOptions, forecast_days: 1 };
     }
 
-    sendApiRequest({ ...location, ...requestOptions })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
+    return new Promise((resolve, reject) => {
+        sendApiRequest({ ...location, ...requestOptions }, "forecast")
+            .then(response => response.json())
+            .then(data => resolve(data))
+            .catch(error => reject(error));
+    });
 }
 
 /**
@@ -77,15 +87,29 @@ function getForecast(location, days, weatherVariables) {
         daily: weatherVariables.daily.join(","),
         current: weatherVariables.current.join(",")
     };
-
-    sendApiRequest({ ...location, ...requestOptions })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
+    
+    return new Promise((resolve, reject) => {
+        sendApiRequest({ ...location, ...requestOptions }, "forecast")
+            .then(response => response.json())
+            .then(data => resolve(data))
+            .catch(error => reject(error));
+    });
 }
 
-// Well need: 
+// We'll need: 
 // current: temperature_2m,precipitation
 // hourly: temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_direction_10m,uv_index
 // daily: -
+
+/**
+ * @param {string} query 
+ * @returns {Promise<{ [key: string]: any }>}
+ */
+function searchCity(query) {
+    return new Promise((resolve, reject) => {
+        sendApiRequest({ name: query }, "search")
+            .then(response => response.json())
+            .then(data => resolve(data))
+            .catch(error => reject(error));
+    });
+}
