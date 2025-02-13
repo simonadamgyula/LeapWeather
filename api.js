@@ -17,8 +17,8 @@ function objectToGetParams(params) {
  * @param {string} params 
  * @returns {Promise<Response>}
  */
-function sendApiRequest(url, params) {
-    let url = `${url}?${objectToGetParams(params)}`;
+function sendApiRequest(uri, params) {
+    let url = `${uri}?${objectToGetParams(params)}`;
     return fetch(url);
 }
 
@@ -44,9 +44,9 @@ function formatDate(date) {
  */
 function getWeatherForDay(location, day, weatherVariables) {
     let requestOptions = {
-        hourly: weatherVariables.hourly.join(","),
-        daily: weatherVariables.daily.join(","),
-        current: weatherVariables.current.join(",")
+        hourly: (weatherVariables.hourly || []).join(","),
+        daily: (weatherVariables.daily || []).join(","),
+        current: (weatherVariables.current || []).join(",")
     };
 
     if (day) {
@@ -75,9 +75,9 @@ function getWeatherForDay(location, day, weatherVariables) {
 function getForecast(location, days, weatherVariables) {
     let requestOptions = {
         forecast_days: days,
-        hourly: weatherVariables.hourly.join(","),
-        daily: weatherVariables.daily.join(","),
-        current: weatherVariables.current.join(",")
+        hourly: (weatherVariables.hourly || []).join(","),
+        daily: (weatherVariables.daily || []).join(","),
+        current: (weatherVariables.current || []).join(",")
     };
     
     return new Promise((resolve, reject) => {
