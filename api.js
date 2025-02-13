@@ -1,12 +1,5 @@
-/**
- * @param {string} subRoute 
- * @returns {string}
- */
-function getApiRoute(subRoute) {
-    const apiUrl = "https://api.open-meteo.com/v1/";
-    return apiUrl + subRoute;
-}
-
+const apiUrl = "https://api.open-meteo.com/v1/forecast";
+const searchUrl = "https://geocoding-api.open-meteo.com/v1/search";
 
 /**
  * 
@@ -22,11 +15,10 @@ function objectToGetParams(params) {
 /**
  * 
  * @param {string} params 
- * @param {string} subRoute 
  * @returns {Promise<Response>}
  */
-function sendApiRequest(params, subRoute) {
-    let url = `${getApiRoute(subRoute)}?${objectToGetParams(params)}`;
+function sendApiRequest(url, params) {
+    let url = `${url}?${objectToGetParams(params)}`;
     return fetch(url);
 }
 
@@ -66,7 +58,7 @@ function getWeatherForDay(location, day, weatherVariables) {
     }
 
     return new Promise((resolve, reject) => {
-        sendApiRequest({ ...location, ...requestOptions }, "forecast")
+        sendApiRequest(apiUrl, { ...location, ...requestOptions })
             .then(response => response.json())
             .then(data => resolve(data))
             .catch(error => reject(error));
@@ -89,7 +81,7 @@ function getForecast(location, days, weatherVariables) {
     };
     
     return new Promise((resolve, reject) => {
-        sendApiRequest({ ...location, ...requestOptions }, "forecast")
+        sendApiRequest(apiUrl, { ...location, ...requestOptions })
             .then(response => response.json())
             .then(data => resolve(data))
             .catch(error => reject(error));
@@ -99,7 +91,7 @@ function getForecast(location, days, weatherVariables) {
 // We'll need: 
 // current: temperature_2m,precipitation
 // hourly: temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_direction_10m,uv_index
-// daily: -
+// daily: temperature_2m_max,temperature_2m_min,precipitation_probability_max / weather_code,temperature_2m_max,temperature_2m_min
 
 /**
  * @param {string} query 
@@ -107,7 +99,7 @@ function getForecast(location, days, weatherVariables) {
  */
 function searchCity(query) {
     return new Promise((resolve, reject) => {
-        sendApiRequest({ name: query }, "search")
+        sendApiRequest(searchUrl, { name: query })
             .then(response => response.json())
             .then(data => resolve(data))
             .catch(error => reject(error));
