@@ -5,9 +5,14 @@ body {
 .nav ul {
     list-style-type: none;
     margin: 0;
-    padding: 1.5em;
+    padding: 1.2em;
     overflow: hidden;
     background-color: #003200;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .nav li {
@@ -15,16 +20,35 @@ body {
 }
 
 .nav li a {
-    display: block;
     padding: 0 1em;
     color: white;
     text-decoration: none;
     font-size: 2.3em;
 }
+
 .navbar_frog {
     object-fit: contain;
     height: 3.5em;
 }
 
+.search_bar {
+    display: block;
+    color: grey;
+    text-align: center;
+    justify-self: flex-end;
+    border-radius: 1em;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    -o-border-radius: 1em;
+    margin-right: 4em;
+    height: 1.6em;
+    width: 16em;
+    border: none;
+    font-size: 1em;
+}
 
+.navbar_space_div{
+    flex-grow: 1;
+}
 
