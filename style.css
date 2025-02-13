@@ -1,5 +1,18 @@
 body {
     margin: 0;
+    background-attachment: fixed;
+    padding-top: calc(5.9em + 3.125em);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.nav {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    
 }
 
 .nav ul {
@@ -50,5 +63,10 @@ body {
 
 .navbar_space_div{
     flex-grow: 1;
+}
+
+.content {
+    border: 1px solid black;
+    width: 50%;
 }
 
