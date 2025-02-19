@@ -14,7 +14,13 @@ searchBar.oninput = async function () {
     for (let city of cities) {
         const item = document.createElement("button");
         item.classList.add("search_item");
-        item.innerHTML = `<img src="https://flagsapi.com/${city.country_code}/flat/64.png"> ${city.name}`;
+        item.innerHTML = `
+        <div class="upper">
+            <img src="https://flagsapi.com/${city.country_code}/flat/64.png"> 
+            ${city.name}
+        </div>
+        ${city.admin1 ?? ""}
+        `;
         citiesList.appendChild(item);
 
 

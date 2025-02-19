@@ -95,15 +95,23 @@ body {
     cursor: pointer;
     text-align: left;
 
+    font-size: 0.8em;
+    color: lightgrey;
+}
+
+.search_item > .upper {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     gap: 5px;
+
+    font-size: 1.2em;
+    font-weight: 700;
 }
 
-.search_item > img {
-    height: 16px;
+.search_item .upper > img {
+    height: 24px;
 }
 
 #search_list:empty {
