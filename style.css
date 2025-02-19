@@ -93,6 +93,17 @@ body {
     color: white;
     font-family: "Nunito Sans", sans-serif;
     cursor: pointer;
+    text-align: left;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.search_item > img {
+    height: 16px;
 }
 
 #search_list:empty {

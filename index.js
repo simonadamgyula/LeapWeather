@@ -14,13 +14,14 @@ searchBar.oninput = async function () {
     for (let city of cities) {
         const item = document.createElement("button");
         item.classList.add("search_item");
-        item.innerText = city.name;
+        item.innerHTML = `<img src="https://flagsapi.com/${city.country_code}/flat/64.png"> ${city.name}`;
         citiesList.appendChild(item);
 
-        item.onclick = function () {
+
+        // using onmousedown, so it run before the element is deleted in onblur
+        item.onmousedown = function () {
             document.cookie = `longitude=${city.longitude}`;
             document.cookie = `latitude=${city.latitude}`;
-            console.log(city);
         }
     }
 }
@@ -28,5 +29,4 @@ searchBar.oninput = async function () {
 searchBar.onblur = function () {
     citiesList.innerHTML = "";
     searchBar.value = "";
-    console.log("blur");
 }
