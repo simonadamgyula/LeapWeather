@@ -70,3 +70,28 @@ body {
     width: 50%;
 }
 
+.current_weather {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.current_weather img{
+    width: 12em;
+}
+
+.details_left {
+     padding: 0 4em; 
+}
+
+.details_right {
+     padding-right: 10em;
+}
+
+.details_right p{
+    font-size: 1.6em;
+    justify-items: center;
+    display: flex;
+    justify-content: space-between;
+    
+}
