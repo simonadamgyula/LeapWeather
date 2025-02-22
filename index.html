@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LeapWeather</title>
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
 </head>
 
 <body>
@@ -13,34 +16,33 @@
         <ul>
             <li><img class="navbar_frog" src="pictures/forg_placeholder.png" alt=""></li>
             <li><a href="#home">LeapWeather</a></li>
-            <li class = "navbar_space_div"></li>
-            <li><input class= "search_bar" type = "text" placeholder="Keressen itt..."></li>
+            <li class="navbar_space_div"></li>
+            <li><input class="search_bar" type="text" placeholder="Keressen itt..."></li>
         </ul>
     </div>
+    <div class="content current_weather">
+        <p>current weather</p>
+    </div>
 
-    
-        <div class = "content current_weather">
-            <p>current weather</p>
+    <div class="content diagrams">
+        <p>diagrams</p>
+        <div class="temperature_diagram">
+            <canvas id="temperature-chart" style="width:100%;max-width:700px"></canvas>
         </div>
 
-        <div class = "content diagrams">
-            <p>diagrams</p>
-            <div class="temperature_diagram">
-                <p>temp</p>
-            </div>
-
-            <div class="precipitation_diagram">
-                <p>precip</p>
-            </div>
-
+        <div class="precipitation_diagram">
+            <canvas id="precipitation-chart" style="width:100%;max-width:700px"></canvas>
         </div>
 
-        <div class = "content weekly_forecast">
-            <p>weekly</p>
-        </div>
+    </div>
 
+    <div class="content weekly_forecast">
+        <p>weekly</p>
+    </div>
 
-
+    <script src="api.js"></script>
+    <script src="cookies.js"></script>
+    <script src="graphs.js"></script>
 </body>
 
 </html>
