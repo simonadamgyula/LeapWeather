@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LeapWeather</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -13,34 +14,36 @@
         <ul>
             <li><img class="navbar_frog" src="pictures/forg_placeholder.png" alt=""></li>
             <li><a href="#home">LeapWeather</a></li>
-            <li class = "navbar_space_div"></li>
-            <li><input class= "search_bar" type = "text" placeholder="Keressen itt..."></li>
+            <li class="navbar_space_div"></li>
+            <li>
+                <input id="search_bar" class="search_bar" type="text" placeholder="Keressen itt...">
+                <div id="search_list"></div>
+            </li>
         </ul>
     </div>
 
+    <div class="content current_weather">
+        <p>current weather</p>
+    </div>
+
+    <div class="content diagrams">
+        <p>diagrams</p>
+        <div class="temperature_diagram">
+            <p>temp</p>
+        </div>
+        
+        <div class="precipitation_diagram">
+            <p>precip</p>
+        </div>
+        
+    </div>
     
-        <div class = "content current_weather">
-            <p>current weather</p>
-        </div>
+    <div class="content weekly_forecast">
+        <p>weekly</p>
+    </div>
 
-        <div class = "content diagrams">
-            <p>diagrams</p>
-            <div class="temperature_diagram">
-                <p>temp</p>
-            </div>
-
-            <div class="precipitation_diagram">
-                <p>precip</p>
-            </div>
-
-        </div>
-
-        <div class = "content weekly_forecast">
-            <p>weekly</p>
-        </div>
-
-
-
+    <script src="api.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
