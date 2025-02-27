@@ -17,7 +17,11 @@
             <li><img class="navbar_frog" src="pictures/forg_placeholder.png" alt=""></li>
             <li><a href="#home">LeapWeather</a></li>
             <li class="navbar_space_div"></li>
-            <li><input class="search_bar" type="text" placeholder="Keressen itt..."></li>
+
+            <li>
+                <input id="search_bar" class="search_bar" type="text" placeholder="Keressen itt...">
+                <div id="search_list"></div>
+            </li>
         </ul>
     </div>
     <div class="content current_weather">
@@ -33,16 +37,18 @@
         <div class="precipitation_diagram">
             <canvas id="precipitation-chart" style="width:100%;max-width:700px"></canvas>
         </div>
-
+        
     </div>
-
+    
     <div class="content weekly_forecast">
         <p>weekly</p>
     </div>
 
+
     <script src="api.js"></script>
     <script src="cookies.js"></script>
     <script src="graphs.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
