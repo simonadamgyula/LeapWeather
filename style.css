@@ -77,7 +77,7 @@ body {
 .current_weather {
     display: flex;
     justify-content: space-around;
-
+    padding: 2em
 }
 
 .current_weather img{
@@ -89,16 +89,30 @@ body {
 }
 
 .details_right {
-     padding-right: 10em;
+    border-collapse: collapse;
+    width: 100%;
 }
 
-.details_right p{
-    font-size: 1.6em;
-    justify-items: center;
+.details_right tr > td > p {
+    margin: 0;
     display: flex;
-    justify-content: space-between;
-    
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
 }
+
+.details_right tr:not(:last-child) {
+    border-bottom: 1px solid grey;
+}
+
+.details_right tr > :first-child {
+    padding-left: 5px;
+}
+
+.details_right tr > :last-child {
+    padding-right: 5px;
+}
+
 .weekly_forecast {
     display: flex;
     flex-direction: row;
@@ -178,5 +192,10 @@ body {
 
 #search_list:empty {
     display: none;
+}
+
+.wind_arrow {
+    width: 20px;
+    transform: rotateZ(calc(var(--direction) + 90deg));
 }
 
