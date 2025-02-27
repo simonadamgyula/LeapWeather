@@ -7,6 +7,8 @@
     <title>LeapWeather</title>
     <link rel="stylesheet" href="style.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
 </head>
 
 <body>
@@ -15,13 +17,13 @@
             <li><img class="navbar_frog" src="pictures/forg_placeholder.png" alt=""></li>
             <li><a href="#home">LeapWeather</a></li>
             <li class="navbar_space_div"></li>
+
             <li>
                 <input id="search_bar" class="search_bar" type="text" placeholder="Keressen itt...">
                 <div id="search_list"></div>
             </li>
         </ul>
     </div>
-
     <div class="content current_weather">
         <p>current weather</p>
     </div>
@@ -29,11 +31,11 @@
     <div class="content diagrams">
         <p>diagrams</p>
         <div class="temperature_diagram">
-            <p>temp</p>
+            <canvas id="temperature-chart" style="width:100%;max-width:700px"></canvas>
         </div>
-        
+
         <div class="precipitation_diagram">
-            <p>precip</p>
+            <canvas id="precipitation-chart" style="width:100%;max-width:700px"></canvas>
         </div>
         
     </div>
@@ -42,7 +44,10 @@
         <p>weekly</p>
     </div>
 
+
     <script src="api.js"></script>
+    <script src="cookies.js"></script>
+    <script src="graphs.js"></script>
     <script src="index.js"></script>
 </body>
 
