@@ -9,13 +9,21 @@ const windDirectionElement = document.querySelector("#wind_direction");
 const uvElement = document.querySelector("#uv");
 const cityElement = document.querySelector("#city");
 
+const weeklyForecast = document.querySelector("#weekly_forecast")
+
 /**
  * @param {HTMLInputElement} searchbar 
  */
 searchBar.oninput = async function () {
     const value = this.value;
 
-    const response = await searchCity(value);
+    let response = null;
+    try {
+        response = await searchCity(value);
+    } catch {
+        citiesList.innerHTML = "Ellenőrizze az internet szolgáltatását!"
+        return;
+    }
     const cities = response.results ?? [];
     citiesList.innerHTML = "";
 
@@ -44,10 +52,23 @@ searchBar.oninput = async function () {
 }
 
 function getLoaction() {
+    if (getCookie("longitude") == "" || getCookie("latitude") == "") {
+        return {
+            longitude: 47.49835,
+            latitude: 19.04045
+        }
+    }
     return {
         longitude: getCookie("longitude"),
         latitude: getCookie("latitude"),
     }
+}
+
+function getCity() {
+    if (getCookie("city") == "") {
+        return "Budapest";
+    }
+    return getCookie("city");
 }
 
 searchBar.onblur = function () {
@@ -58,7 +79,7 @@ searchBar.onblur = function () {
 function reloadData() {
     getWeatherForDay(getLoaction(), undefined, { current: ["temperature_2m", "relative_humidity_2m", "apparent_temperature", "wind_speed_10m", "wind_direction_10m", "uv_index"] })
         .then(data => {
-            cityElement.innerText = getCookie("city");
+            cityElement.innerText = getCity();
             temperatureElement.innerText = `${data.current.temperature_2m} ${data.current_units.temperature_2m}`;
             apparentTemperatureElement.innerHTML = `<p>${data.current.apparent_temperature} ${data.current_units.apparent_temperature}</p>`;
             humidityElement.innerHTML = `<p>${data.current.relative_humidity_2m} ${data.current_units.relative_humidity_2m}</p>`;
@@ -67,6 +88,26 @@ function reloadData() {
             uvElement.innerHTML = `<p>${data.current.uv_index} ${data.current_units.uv_index}</p>`;
         })
         .catch(error => console.log(error))
+
+    getForecast(getLoaction(), 7, { daily: ["temperature_2m_max", "temperature_2m_min", "weather_code"] })
+        .then(data => {
+            weeklyForecast.innerHTML = "";
+
+            for (let i = 0; i < 7; i++) {
+                weeklyForecast.innerHTML += `
+                    <div class="forecast_card">
+                        <div class="card_day">
+                            <p>Hétfő</p>
+                        </div>
+                        <div class="card_pic">
+                            <img src="pictures/sun_placeholder.jpg">
+                        </div>
+                        <div class="card_temperature">
+                            <p>${data.daily.temperature_2m_min[0]}${data.daily_units.temperature_2m_min} / ${data.daily.temperature_2m_max[0]}${data.daily_units.temperature_2m_max}</p>
+                        </div>
+                    </div>`
+            }
+        })
 }
 
 window.onload = () => reloadData();
