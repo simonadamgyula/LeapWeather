@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 body {
     margin: 0;
@@ -8,6 +8,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 50px;
+    background-color: #212121;
+    font-family: 'Inter', sans-serif;
 }
 
 .nav {
@@ -69,28 +71,41 @@ body {
 }
 
 .content {
-    border: 1px solid black;
-    width: 50%;
+    width: 66vw;
+    box-sizing: border-box;
+    background-color: #2d2d2d;
+    border-radius: 40px;
+    color: white;
 }
 
 
 .current_weather {
     display: flex;
     justify-content: space-around;
-    padding: 2em
 }
 
 .current_weather img{
-    width: 12em;
+    width: 14em;
+    border-radius: 5px;
 }
 
 .details_left {
-     padding: 0 4em; 
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+}
+
+.details_left > h2 {
+    font-size: 48px;
+    font-weight: bolder;
+    margin: 0;
 }
 
 .details_right {
     border-collapse: collapse;
     width: 100%;
+    margin: 35px;
 }
 
 .details_right tr > td > p {
@@ -111,6 +126,10 @@ body {
 
 .details_right tr > :last-child {
     padding-right: 5px;
+}
+
+.details_right svg {
+    fill: white !important;
 }
 
 .weekly_forecast {
