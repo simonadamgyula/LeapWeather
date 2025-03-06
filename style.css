@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+
+
 body {
     margin: 0;
     background-attachment: fixed;
@@ -82,11 +84,13 @@ body {
 .current_weather {
     display: flex;
     justify-content: space-around;
+    box-sizing: border-box;
 }
 
 .current_weather img {
     width: 100%;
     border-radius: 10px;
+    max-width: 100%;
 }
 
 .details_left {
@@ -107,6 +111,8 @@ body {
 .details_right {
     width: 77%;
     padding: 35px;
+    box-sizing: border-box;
+     
 }
 
 .details_right_table {
@@ -241,6 +247,7 @@ body {
     font-weight: bold;
     color: white;
     margin: 0;
+    padding-top: 5px;
 }
 
 .diagrams {
@@ -256,3 +263,28 @@ body {
     font-weight: bolder;
     margin: 0;
 }
+
+@media screen and (max-width: 767px) {
+    .details_left > h2 {
+        font-size: 2.5em;
+    }
+
+    .temperature_wrapper {
+        font-size: 1em;
+    }
+
+    .temperature_wrapper>#temperature {
+        font-size: 2em;
+    }
+
+    .details_right tr> :first-child {
+        font-size: 1em;
+    }
+
+    .details_right tr> :last-child {
+        font-size: 1.1em;
+    }
+}
+
+
+
