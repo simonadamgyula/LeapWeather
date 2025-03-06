@@ -85,7 +85,8 @@ body {
 }
 
 .details_left {
-     padding: 0 4em; 
+    padding: 0 4em; 
+    
 }
 
 .details_right {
@@ -199,3 +200,8 @@ body {
     transform: rotateZ(calc(var(--direction) + 90deg));
 }
 
+body {
+    background-image: url(pictures/ready_for_use/sunny_clear.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
