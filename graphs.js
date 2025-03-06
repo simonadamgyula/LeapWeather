@@ -7,6 +7,7 @@ const weatherVariables = {
     hourly: ["temperature_2m", "precipitation"],
 }
 
+
 getWeatherForDay(position, new Date(), weatherVariables)
     .then(data => {
         const hourlyData = data.hourly;
@@ -23,11 +24,12 @@ getWeatherForDay(position, new Date(), weatherVariables)
  * 
  * @param {number[]} times 
  * @param {number[]} temperatures 
- */
+*/
 function makeTemperatureGraph(times, temperatures) {
     const timeValues = times.map(time => new Date(time).toLocaleTimeString("hu-HU", { hour: "numeric", minute: "2-digit" }));
     console.log(timeValues);
 
+    Chart.defaults.borderColor = "#ffffff";
     new Chart("temperature-chart", {
         type: "line",
         data: {
@@ -40,7 +42,11 @@ function makeTemperatureGraph(times, temperatures) {
             }]
         },
         options: {
-            legend: { display: false }
+            legend: { display: false },
+            scales: {
+                yAxes: [{ gridLines: { color: "#ffffff30", zeroLineColor: "#ffffff60" } }],
+                xAxes: [{ gridLines: { display: false } }]
+            }
         }
     });
 }
@@ -67,7 +73,13 @@ function makePrecipitationGraph(times, precipitations) {
         options: {
             legend: { display: false },
             scales: {
-                yAxes: [{ ticks: { min: 0 } }],
+                yAxes: [{ ticks: { min: 0 }, gridLines: { color: "#ffffff30", zeroLineColor: "#ffffff60" } }],
+                xAxes: [{ gridLines: { display: false } }],
+                x: {
+                    grid: {
+                        color: "white"
+                    }
+                }
             }
         }
     });

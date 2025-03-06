@@ -30,41 +30,45 @@
         <div class="details_left">
             <img src="pictures/sun_placeholder.jpg">
             <h2 id="city">Győr</h2>
-            <p id="temperature">5 °C</p>
+            <div class="temperature_wrapper">
+                Hőmérséklet
+                <p id="temperature">5 °C</p>
+            </div>
         </div>
-        <table class="details_right">
-            <tr>
-                <td>Hőérzet: </td>
-                <td id="apparent_temperature"> 5 °C</td>
-            </tr>
-            <tr>
-                <td>Páratartalom: </td>
-                <td id="humidity"></td>
-            </tr>
-            <tr>
-                <td>Szélerősség: </td>
-                <td id="wind_speed"></td>
-            </tr>
-            <tr>
-                <td>Szélirány: </td>
-                <td id="wind_direction"></td>
-            </tr>
-            <tr>
-                <td>UV sugárzás: </td>
-                <td id="uv"></td>
-            </tr>
-
-        </table>
+        <div class="details_right">
+            <table class="details_right_table">
+                <tr>
+                    <td>Hőérzet: </td>
+                    <td id="apparent_temperature"> 5 °C</td>
+                </tr>
+                <tr>
+                    <td>Páratartalom: </td>
+                    <td id="humidity"></td>
+                </tr>
+                <tr>
+                    <td>Szélerősség: </td>
+                    <td id="wind_speed"></td>
+                </tr>
+                <tr>
+                    <td>Szélirány: </td>
+                    <td id="wind_direction"></td>
+                </tr>
+                <tr>
+                    <td>UV sugárzás: </td>
+                    <td id="uv"></td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <div class="content diagrams">
-        <p>diagrams</p>
+        <h2>Grafikonok</h2>
         <div class="temperature_diagram">
-            <canvas id="temperature-chart" style="width:100%;max-width:700px"></canvas>
+            <canvas id="temperature-chart" style="width:100%;max-width:700px" width="1100" height="500"></canvas>
         </div>
 
         <div class="precipitation_diagram">
-            <canvas id="precipitation-chart" style="width:100%;max-width:700px"></canvas>
+            <canvas id="precipitation-chart" style="width:100%;max-width:700px" width="1100" height="500"></canvas>
         </div>
     </div>
 
