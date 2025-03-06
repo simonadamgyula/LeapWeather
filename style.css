@@ -286,5 +286,25 @@ body {
     }
 }
 
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .details_left > h2 {
+        font-size: 2.8em;
+    }
 
+    .temperature_wrapper {
+        font-size: 1.3em;
+    }
+
+    .temperature_wrapper>#temperature {
+        font-size: 2.2em;
+    }
+
+    .details_right tr> :first-child {
+        font-size: 1.3em;
+    }
+
+    .details_right tr> :last-child {
+        font-size: 1.2em;
+    }
+}
 
