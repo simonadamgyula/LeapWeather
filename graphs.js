@@ -7,8 +7,8 @@ const weatherVariables = {
     hourly: ["temperature_2m", "precipitation"],
 }
 
-
-getWeatherForDay(position, new Date(), weatherVariables)
+function createGraphs(date) {
+getWeatherForDay(position, date, weatherVariables)
     .then(data => {
         const hourlyData = data.hourly;
 
@@ -18,6 +18,7 @@ getWeatherForDay(position, new Date(), weatherVariables)
     .catch(error => {
         console.error(error);
     });
+}
 
 
 /**

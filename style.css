@@ -256,3 +256,12 @@ body {
     font-weight: bolder;
     margin: 0;
 }
+
+.back_arrow {
+    color: white;
+    font-size: 28px;
+    font-weight: bolder;
+    text-align: left;
+    background-color: transparent;
+    text-decoration: none;
+}
