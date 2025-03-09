@@ -1,196 +1,203 @@
 <!DOCTYPE html>
 <html lang="hu">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeapWeather</title>
-    <link rel="stylesheet" href="style.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LeapWeather</title>
+        <link rel="stylesheet" href="style.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     </script>
-</head>
+    </head>
 
-<body>
-    <div class="nav">
-        <ul>
-            <li><img class="navbar_frog" src="pictures/forg_placeholder.png" alt=""></li>
-            <li><a href="#home">LeapWeather</a></li>
-            <li class="navbar_space_div"></li>
+    <body>
+        <div class="nav">
+            <ul>
+                <li><img class="navbar_frog" src="pictures/forg_placeholder.png"
+                        alt></li>
+                <li><a href="#home">LeapWeather</a></li>
+                <li class="navbar_space_div"></li>
 
-            <li>
-                <input id="search_bar" class="search_bar" type="text" placeholder="Keressen itt...">
-                <div id="search_list"></div>
-            </li>
-        </ul>
-    </div>
-
-    <div class="content current_weather">
-        <!-- <p>current weather</p> -->
-        <div class="details_left">
-            <img src="pictures/sun_placeholder.jpg">
-            <h2 id="city">Győr</h2>
-            <div class="temperature_wrapper">
-                Hőmérséklet
-                <p id="temperature">5 °C</p>
-            </div>
-        </div>
-        <div class="details_right">
-            <table class="details_right_table">
-                <tr>
-                    <td>Hőérzet: </td>
-                    <td id="apparent_temperature"> 5 °C</td>
-                </tr>
-                <tr>
-                    <td>Páratartalom: </td>
-                    <td id="humidity"></td>
-                </tr>
-                <tr>
-                    <td>Szélerősség: </td>
-                    <td id="wind_speed"></td>
-                </tr>
-                <tr>
-                    <td>Szélirány: </td>
-                    <td id="wind_direction"></td>
-                </tr>
-                <tr>
-                    <td>UV sugárzás: </td>
-                    <td id="uv"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="content diagrams">
-        <h2>Grafikonok</h2>
-        <div class="temperature_diagram">
-            <canvas id="temperature-chart" style="width:100%;max-width:700px" width="1100" height="500"></canvas>
+                <li>
+                    <input id="search_bar" class="search_bar" type="text"
+                        placeholder="Keressen itt...">
+                    <div id="search_list"></div>
+                </li>
+            </ul>
         </div>
 
-        <div class="precipitation_diagram">
-            <canvas id="precipitation-chart" style="width:100%;max-width:700px" width="1100" height="500"></canvas>
-        </div>
-    </div>
-
-    <div class="content weekly_forecast" id="weekly_forecast">
-        <div class="forecast_card">
-
-            <div class="card_day">
-                <p>Hétfő</p>
-            </div>
-
-            <div class="card_pic">
+        <div class="content current_weather">
+            <!-- <p>current weather</p> -->
+            <div class="details_left">
                 <img src="pictures/sun_placeholder.jpg">
+                <h2 id="city">Győr</h2>
+                <div class="temperature_wrapper">
+                    Hőmérséklet:
+                    <p id="temperature">5 °C</p>
+                </div>
             </div>
-
-            <div class="card_temperature">
-                <p>10°C / 15°C</p>
-
-            </div>
-
-        </div>
-        <div class="forecast_card">
-
-            <div class="card_day">
-                <p>Kedd</p>
-            </div>
-
-            <div class="card_pic">
-                <img src="pictures/sun_placeholder.jpg">
-            </div>
-
-            <div class="card_temperature">
-                <p>10°C / 15°C</p>
-
-            </div>
-
-        </div>
-        <div class="forecast_card">
-
-            <div class="card_day">
-                <p>Szerda</p>
-            </div>
-
-            <div class="card_pic">
-                <img src="pictures/sun_placeholder.jpg">
-            </div>
-
-            <div class="card_temperature">
-                <p>10°C / 15°C</p>
-
-            </div>
-
-        </div>
-        <div class="forecast_card">
-
-            <div class="card_day">
-                <p>Csütörtök</p>
-            </div>
-
-            <div class="card_pic">
-                <img src="pictures/sun_placeholder.jpg">
-            </div>
-
-            <div class="card_temperature">
-                <p>10°C / 15°C</p>
-
-            </div>
-
-        </div>
-        <div class="forecast_card">
-
-            <div class="card_day">
-                <p>Péntek</p>
-            </div>
-
-            <div class="card_pic">
-                <img src="pictures/sun_placeholder.jpg">
-            </div>
-
-            <div class="card_temperature">
-                <p>10°C / 15°C</p>
-
-            </div>
-
-        </div>
-        <div class="forecast_card">
-
-            <div class="card_day">
-                <p>Szombat</p>
-            </div>
-
-            <div class="card_pic">
-                <img src="pictures/sun_placeholder.jpg">
-            </div>
-
-            <div class="card_temperature">
-                <p>10°C / 15°C</p>
-
-            </div>
-
-        </div>
-        <div class="forecast_card">
-
-            <div class="card_day">
-                <p>Vasárnap</p>
-            </div>
-
-            <div class="card_pic">
-                <img src="pictures/sun_placeholder.jpg">
-            </div>
-
-            <div class="card_temperature">
-                <p>10°C / 15°C</p>
-
+            <div class="details_right">
+                <table class="details_right_table">
+                    <tr>
+                        <td>Hőérzet: </td>
+                        <td id="apparent_temperature"> 5 °C</td>
+                    </tr>
+                    <tr>
+                        <td>Páratartalom: </td>
+                        <td id="humidity"></td>
+                    </tr>
+                    <tr>
+                        <td>Szélerősség: </td>
+                        <td id="wind_speed"></td>
+                    </tr>
+                    <tr>
+                        <td>Szélirány: </td>
+                        <td id="wind_direction"></td>
+                    </tr>
+                    <tr>
+                        <td>UV sugárzás: </td>
+                        <td id="uv"></td>
+                    </tr>
+                </table>
             </div>
         </div>
 
-    </div>
+        <div class="content diagrams">
+            <h2>Grafikonok</h2>
+            <div class="temperature_diagram">
+                <canvas id="temperature-chart"
+                    style="width:100%;max-width:700px" width="1100"
+                    height="500"></canvas>
+            </div>
 
-    <script src="api.js"></script>
-    <script src="cookies.js"></script>
-    <script src="graphs.js"></script>
-    <script src="index.js"></script>
-</body>
+            <div class="precipitation_diagram">
+                <canvas id="precipitation-chart"
+                    style="width:100%;max-width:700px" width="1100"
+                    height="500"></canvas>
+            </div>
+        </div>
+
+        <div class="content weekly_forecast" id="weekly_forecast">
+            <div class="forecast_card">
+
+                <div class="card_day">
+                    <p>Hétfő</p>
+                </div>
+
+                <div class="card_pic">
+                    <img src="pictures/sun_placeholder.jpg">
+                </div>
+
+                <div class="card_temperature">
+                    <p>10°C / 15°C</p>
+
+                </div>
+
+            </div>
+            <div class="forecast_card">
+
+                <div class="card_day">
+                    <p>Kedd</p>
+                </div>
+
+                <div class="card_pic">
+                    <img src="pictures/sun_placeholder.jpg">
+                </div>
+
+                <div class="card_temperature">
+                    <p>10°C / 15°C</p>
+
+                </div>
+
+            </div>
+            <div class="forecast_card">
+
+                <div class="card_day">
+                    <p>Szerda</p>
+                </div>
+
+                <div class="card_pic">
+                    <img src="pictures/sun_placeholder.jpg">
+                </div>
+
+                <div class="card_temperature">
+                    <p>10°C / 15°C</p>
+
+                </div>
+
+            </div>
+            <div class="forecast_card">
+
+                <div class="card_day">
+                    <p>Csütörtök</p>
+                </div>
+
+                <div class="card_pic">
+                    <img src="pictures/sun_placeholder.jpg">
+                </div>
+
+                <div class="card_temperature">
+                    <p>10°C / 15°C</p>
+
+                </div>
+
+            </div>
+            <div class="forecast_card">
+
+                <div class="card_day">
+                    <p>Péntek</p>
+                </div>
+
+                <div class="card_pic">
+                    <img src="pictures/sun_placeholder.jpg">
+                </div>
+
+                <div class="card_temperature">
+                    <p>10°C / 15°C</p>
+
+                </div>
+
+            </div>
+            <div class="forecast_card">
+
+                <div class="card_day">
+                    <p>Szombat</p>
+                </div>
+
+                <div class="card_pic">
+                    <img src="pictures/sun_placeholder.jpg">
+                </div>
+
+                <div class="card_temperature">
+                    <p>10°C / 15°C</p>
+
+                </div>
+
+            </div>
+            <div class="forecast_card">
+
+                <div class="card_day">
+                    <p>Vasárnap</p>
+                </div>
+
+                <div class="card_pic">
+                    <img src="pictures/sun_placeholder.jpg">
+                </div>
+
+                <div class="card_temperature">
+                    <p>10°C / 15°C</p>
+
+                </div>
+            </div>
+
+        </div>
+
+        <script src="api.js"></script>
+        <script src="cookies.js"></script>
+        <script src="graphs.js"></script>
+        <script src="index.js"></script>
+    </body>
 
 </html>
