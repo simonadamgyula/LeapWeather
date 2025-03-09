@@ -20,3 +20,23 @@ function getCookie(cname) {
     }
     return "";
 }
+
+function getLoaction() {
+    if (getCookie("longitude") == "" || getCookie("latitude") == "") {
+        return {
+            longitude: 47.49835,
+            latitude: 19.04045
+        }
+    }
+    return {
+        longitude: getCookie("longitude"),
+        latitude: getCookie("latitude"),
+    }
+}
+
+function getCity() {
+    if (getCookie("city") == "") {
+        return "Budapest";
+    }
+    return getCookie("city");
+}

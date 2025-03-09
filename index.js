@@ -10,7 +10,7 @@ const uvElement = document.querySelector("#uv");
 const cityElement = document.querySelector("#city");
 
 const weeklyForecast = document.querySelector("#weekly_forecast")
-
+// im writing a comment:) -Bence
 /**
  * @param {HTMLInputElement} searchbar 
  */
@@ -51,26 +51,6 @@ searchBar.oninput = async function () {
     }
 }
 
-function getLoaction() {
-    if (getCookie("longitude") == "" || getCookie("latitude") == "") {
-        return {
-            longitude: 47.49835,
-            latitude: 19.04045
-        }
-    }
-    return {
-        longitude: getCookie("longitude"),
-        latitude: getCookie("latitude"),
-    }
-}
-
-function getCity() {
-    if (getCookie("city") == "") {
-        return "Budapest";
-    }
-    return getCookie("city");
-}
-
 searchBar.onblur = function () {
     citiesList.innerHTML = "";
     searchBar.value = "";
@@ -95,7 +75,7 @@ function reloadData() {
 
             for (let i = 0; i < 7; i++) {
                 weeklyForecast.innerHTML += `
-                    <div class="forecast_card">
+                    <a class="forecast_card" href="/forecast.html?date=${new Date(data.daily.time[i]).getTime()}">
                         <div class="card_day">
                             <p>Hétfő</p>
                         </div>
@@ -105,9 +85,11 @@ function reloadData() {
                         <div class="card_temperature">
                             <p>${data.daily.temperature_2m_min[0]}${data.daily_units.temperature_2m_min} / ${data.daily.temperature_2m_max[0]}${data.daily_units.temperature_2m_max}</p>
                         </div>
-                    </div>`
+                    </a>`
             }
         })
+
+    createGraphs(new Date());
 }
 
 window.onload = () => reloadData();

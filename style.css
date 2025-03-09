@@ -264,6 +264,16 @@ body {
     margin: 0;
 }
 
+.back_arrow {
+    color: white;
+    font-size: 28px;
+    font-weight: bolder;
+    text-align: left;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+
 @media screen and (max-width: 767px) {
     .details_left > h2 {
         font-size: 2.5em;
@@ -307,4 +317,3 @@ body {
         font-size: 1.2em;
     }
 }
-
