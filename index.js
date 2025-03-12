@@ -9,7 +9,9 @@ const windDirectionElement = document.querySelector("#wind_direction");
 const uvElement = document.querySelector("#uv");
 const cityElement = document.querySelector("#city");
 
-const weeklyForecast = document.querySelector("#weekly_forecast")
+const weekdayLookup = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"]
+
+const forecastCardContainer = document.querySelector("#forecast_cards")
 // im writing a comment:) -Bence
 /**
  * @param {HTMLInputElement} searchbar 
@@ -71,13 +73,14 @@ function reloadData() {
 
     getForecast(getLoaction(), 7, { daily: ["temperature_2m_max", "temperature_2m_min", "weather_code"] })
         .then(data => {
-            weeklyForecast.innerHTML = "";
+            forecastCardContainer.innerHTML = "";
 
             for (let i = 0; i < 7; i++) {
-                weeklyForecast.innerHTML += `
-                    <a class="forecast_card" href="/forecast.html?date=${new Date(data.daily.time[i]).getTime()}">
+                const date = new Date(data.daily.time[i])
+                forecastCardContainer.innerHTML += `
+                    <a class="forecast_card" href="./forecast.html?date=${date.getTime()}">
                         <div class="card_day">
-                            <p>Hétfő</p>
+                            <p>${weekdayLookup[date.getDay()]}</p>
                         </div>
                         <div class="card_pic">
                             <img src="pictures/sun_placeholder.jpg">
