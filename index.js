@@ -86,7 +86,7 @@ function reloadData() {
                             <img src="pictures/sun_placeholder.jpg">
                         </div>
                         <div class="card_temperature">
-                            <p>${data.daily.temperature_2m_min[0]}${data.daily_units.temperature_2m_min} / ${data.daily.temperature_2m_max[0]}${data.daily_units.temperature_2m_max}</p>
+                            <p>${data.daily.temperature_2m_min[i]}${data.daily_units.temperature_2m_min} / ${data.daily.temperature_2m_max[i]}${data.daily_units.temperature_2m_max}</p>
                         </div>
                     </a>`
             }
