@@ -7,6 +7,8 @@ const weatherVariables = {
     hourly: ["temperature_2m", "precipitation"],
 }
 
+let precipitationChartInstance;
+
 function createGraphs(date) {
 getWeatherForDay(position, date, weatherVariables)
     .then(data => {
@@ -77,7 +79,7 @@ function makePrecipitationGraph(times, precipitations) {
         precipitationChartInstance.destroy();
     }
 
-    new Chart("precipitation-chart", {
+    precipitationChartInstance = new Chart("precipitation-chart", {
         type: "bar",
         data: {
             labels: timeValues,
