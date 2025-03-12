@@ -14,6 +14,11 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .nav {
     position: absolute;
     width: 100%;
@@ -166,7 +171,8 @@ body {
 #forecast_cards {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
     gap: 10px;
 }
@@ -334,5 +340,24 @@ body {
 
     .details_right tr> :last-child {
         font-size: 1.2em;
+    }
+}
+
+
+@media screen and (min-width: 941px) and (max-width: 1300px) {
+    .forecast_card{
+        max-width: 20%;
+    }
+    .card_pic img{
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .forecast_card{
+        max-width: 20%;
+    }
+    .card_pic img {
+        max-width: 80%;
     }
 }
