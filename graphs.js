@@ -63,7 +63,7 @@ function makePrecipitationGraph(times, precipitations) {
     const timeValues = times.map(time => new Date(time).toLocaleTimeString("hu-HU", { hour: "numeric", minute: "2-digit" }));
     const hasPrecipitation = precipitations.some(p => p > 0);
     
-    if(hasPrecipitation){
+    if(!hasPrecipitation){
         document.getElementById("precipitation_diagram").style.display = "none"; 
         document.getElementById("no-precipitation-message").style.display = "block"; 
         return;
