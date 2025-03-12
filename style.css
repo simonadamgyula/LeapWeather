@@ -312,7 +312,15 @@ canvas {
     width: 100%;
     max-width: 85%;
     height: 300px;
+    display: none;
 }
+
+#no_precipitation_message{
+    display: none;
+    text-align: center;
+    font-size: 1.3em;
+}
+
 
 
 @media screen and (max-width: 767px) {
@@ -333,6 +341,10 @@ canvas {
     }
 
     .details_right tr> :last-child {
+        font-size: 1.1em;
+    }
+
+    #no_precipitation_message{
         font-size: 1.1em;
     }
 }

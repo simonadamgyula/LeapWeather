@@ -67,12 +67,12 @@ function makePrecipitationGraph(times, precipitations) {
     
     if(!hasPrecipitation){
         document.getElementById("precipitation_diagram").style.display = "none"; 
-        document.getElementById("no-precipitation-message").style.display = "block"; 
+        document.getElementById("no_precipitation_message").style.display = "block"; 
         return;
     }
     else{
         document.getElementById("precipitation_diagram").style.display = "block";
-        document.getElementById("no-precipitation-message").style.display = "none";
+        document.getElementById("no_precipitation_message").style.display = "none";
     }
 
     if (precipitationChartInstance) {
