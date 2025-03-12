@@ -297,6 +297,22 @@ a {
     background-color: transparent;
     text-decoration: none;
 }
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.temperature_diagram{
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+}
+
+.precipitation_diagram{
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+}
 
 
 @media screen and (max-width: 767px) {

@@ -43,6 +43,8 @@ function makeTemperatureGraph(times, temperatures) {
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             legend: { display: false },
             scales: {
                 yAxes: [{ gridLines: { color: "#ffffff30", zeroLineColor: "#ffffff60" } }],
@@ -72,6 +74,8 @@ function makePrecipitationGraph(times, precipitations) {
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             legend: { display: false },
             scales: {
                 yAxes: [{ ticks: { min: 0 }, gridLines: { color: "#ffffff30", zeroLineColor: "#ffffff60" } }],
