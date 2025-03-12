@@ -302,13 +302,13 @@ canvas {
     height: auto !important;
 }
 
-.temperature_diagram{
+#temperature_diagram{
     width: 100%;
     max-width: 85%;
     height: 300px;
 }
 
-.precipitation_diagram{
+#precipitation_diagram{
     width: 100%;
     max-width: 85%;
     height: 300px;
