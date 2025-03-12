@@ -87,9 +87,10 @@ function reloadData() {
             windDirectionElement.innerHTML = `<p>${data.current.wind_direction_10m}${data.current_units.wind_direction_10m} <object style="--direction: ${data.current.wind_direction_10m}deg" class="wind_arrow" data="/pictures/arrow.svg" type="image/svg+xml"></object></p>`;
             uvElement.innerHTML = `<p>${data.current.uv_index} ${data.current_units.uv_index}</p>`;
             
-
+            
             var x = data.current.weather_code;
             console.log(data.current.weather_code);
+            
             console.log(x);
         })
         .catch(error => console.log(error))
@@ -129,6 +130,8 @@ function startTime() {
 
 
 function WeatherIcon() {
+    let weather_icon = document.getElementById("weather_icon");
+    console.log(weather_icon);
     if (x==0 && h >= 18 || x == 0 && h < 5) {
         weather_icon.src = "pictures/ready_for_use/hold.png";
     } else if (x==0) {
