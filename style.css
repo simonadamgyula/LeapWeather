@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
 
 body {
     margin: 0;
@@ -8,13 +10,20 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 50px;
+    background-color: #212121;
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }
 
 .nav {
     position: absolute;
     width: 100%;
     top: 0;
-    
+
 }
 
 .nav ul {
@@ -64,39 +73,60 @@ body {
     font-weight: bold;
 }
 
-.navbar_space_div{
+.navbar_space_div {
     flex-grow: 1;
 }
 
 .content {
-    border: 1px solid black;
-    width: 50%;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
+    width: 66vw;
+    box-sizing: border-box;
+    background-color: #2d2d2d;
+    border-radius: 40px;
+    color: white;
 }
 
 
 .current_weather {
     display: flex;
     justify-content: space-around;
-    padding: 2em
+    box-sizing: border-box;
 }
 
-.current_weather img{
-    width: 12em;
+.current_weather img {
+    width: 100%;
+    border-radius: 10px;
+    max-width: 100%;
 }
 
 .details_left {
-    padding: 0 4em; 
-    
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+    width: 33%;
+    box-sizing: content-box;
+}
+
+.details_left>h2 {
+    font-size: 48px;
+    font-weight: bolder;
+    margin: 0;
 }
 
 .details_right {
-    border-collapse: collapse;
-    width: 100%;
+    width: 77%;
+    padding: 35px;
+    box-sizing: border-box;
+
 }
 
-.details_right tr > td > p {
+.details_right_table {
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+}
+
+.details_right tr>td>p {
     margin: 0;
     display: flex;
     flex-direction: row;
@@ -108,48 +138,78 @@ body {
     border-bottom: 1px solid grey;
 }
 
-.details_right tr > :first-child {
+.details_right tr> :first-child {
     padding-left: 5px;
+    color: #aaaaaa;
+    font-size: 24px;
 }
 
-.details_right tr > :last-child {
+.details_right tr> :last-child {
     padding-right: 5px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.details_right svg {
+    fill: white !important;
 }
 
 .weekly_forecast {
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.weekly_forecast h2 {
+    font-size: 64px;
+    font-weight: bolder;
+    margin: 0;
+}
+
+#forecast_cards {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
 }
 
 .forecast_card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    border-radius: 1.2em;
-    -webkit-border-radius: 1.2em;
-    -moz-border-radius: 1.2em;
-    -ms-border-radius: 1.2em;
-    -o-border-radius: 1.2em;
-    border: solid black 2px;
-    width: 5vw;
-    padding: 0em 0.5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: fit-content;
+    padding: 10px;
     text-align: center;
-}
-.forecast_card p{
-    margin: 0.5em 0.2em;
-}
-.card_day p{
-    font-size: 1.1em;
-    
-}
-
-.card_temperature p{
-    font-size: 1.4em;
-    margin-top: 0.2em;
+    color: white;
+    text-decoration: none;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #1f1f1f;
+    max-width: 10%;
 }
 
-.card_pic img{
-    width: 3.7em;
+.forecast_card p {
+    margin: 0;
+}
+
+.card_day p {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.card_temperature p {
+    font-size: 16px;
+    text-align: center;
+    /* margin-top: 0.2em; */
+}
+
+.card_pic img {
+    width: 100%;
+    border-radius: 10px;
 }
 
 #search_list {
@@ -178,7 +238,7 @@ body {
     color: lightgrey;
 }
 
-.search_item > .upper {
+.search_item>.upper {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -189,7 +249,7 @@ body {
     font-weight: 700;
 }
 
-.search_item .upper > img {
+.search_item .upper>img {
     height: 24px;
 }
 
@@ -198,7 +258,7 @@ body {
 }
 
 .wind_arrow {
-    width: 20px;
+    width: 30px;
     transform: rotateZ(calc(var(--direction) + 90deg));
 }
 
@@ -207,4 +267,132 @@ body {
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: fixed;
+}
+  
+.temperature_wrapper {
+    font-size: 16px;
+    color: #cbcbcb;
+}
+
+.temperature_wrapper>#temperature {
+    font-size: 64px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    padding-top: 5px;
+}
+
+.diagrams {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 35px;
+}
+
+.diagrams h2 {
+    font-size: 64px;
+    font-weight: bolder;
+    margin: 0;
+}
+
+.back_arrow {
+    color: white;
+    font-size: 28px;
+    font-weight: bolder;
+    text-align: left;
+    background-color: transparent;
+    text-decoration: none;
+}
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+#temperature_diagram{
+    width: 100%;
+    max-width: 85%;
+    height: 300px;
+}
+
+#precipitation_diagram{
+    width: 100%;
+    max-width: 85%;
+    height: 300px;
+    display: none;
+}
+
+#no_precipitation_message{
+    display: none;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .details_left>h2 {
+        font-size: 2.5em;
+    }
+
+    .temperature_wrapper {
+        font-size: 1em;
+    }
+
+    .temperature_wrapper>#temperature {
+        font-size: 2em;
+    }
+
+    .details_right tr> :first-child {
+        font-size: 1em;
+    }
+
+    .details_right tr> :last-child {
+        font-size: 1.1em;
+    }
+
+    #no_precipitation_message{
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .details_left>h2 {
+        font-size: 2.8em;
+    }
+
+    .temperature_wrapper {
+        font-size: 1.3em;
+    }
+
+    .temperature_wrapper>#temperature {
+        font-size: 2.2em;
+    }
+
+    .details_right tr> :first-child {
+        font-size: 1.3em;
+    }
+
+    .details_right tr> :last-child {
+        font-size: 1.2em;
+    }
+}
+
+
+@media screen and (min-width: 941px) and (max-width: 1300px) {
+    .forecast_card{
+        max-width: 20%;
+    }
+    .card_pic img{
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .forecast_card{
+        max-width: 20%;
+    }
+    .card_pic img {
+        max-width: 80%;
+    }
 }
