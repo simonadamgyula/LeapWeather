@@ -14,8 +14,10 @@
 <body>
     <div class="nav">
         <ul>
-            <li><img class="navbar_frog" src="pictures/forg_placeholder.png" alt=""></li>
-            <li><a href="#home">LeapWeather</a></li>
+            <li>
+                <img class="navbar_frog" src="pictures/ready_for_use/beka_front.png" alt="">
+                <a href="#home">LeapWeather</a>
+            </li>
             <li class="navbar_space_div"></li>
 
             <li>
@@ -32,10 +34,10 @@
     <div class="content current_weather">
         <!-- <p>current weather</p> -->
         <div class="details_left">
-            <img src="pictures/sun_placeholder.jpg">
+            <img id="weather_icon" src="">
             <h2 id="city">Győr</h2>
             <div class="temperature_wrapper">
-                Hőmérséklet
+                Hőmérséklet:
                 <p id="temperature">5 °C</p>
             </div>
         </div>
@@ -84,6 +86,7 @@
         </div>
     </div>
 
+    <script src="background.js"></script>
     <script src="api.js"></script>
     <script src="cookies.js"></script>
     <script src="graphs.js"></script>

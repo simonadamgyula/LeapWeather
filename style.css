@@ -84,7 +84,7 @@ a {
 .content {
     width: 66vw;
     box-sizing: border-box;
-    background-color: rgba(45, 45, 45, 0.8);
+    background-color: rgba(45, 45, 45, 0.9);
     border-radius: 40px;
     color: white;
 }
@@ -311,7 +311,7 @@ body {
 }
 
 .back_arrow {
-    color: white;
+    color: rgba(45, 45, 45);;
     font-size: 28px;
     font-weight: bolder;
     text-align: left;

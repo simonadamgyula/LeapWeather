@@ -21,7 +21,7 @@ function getCookie(cname) {
     return "";
 }
 
-function getLoaction() {
+function getLocation() {
     if (getCookie("longitude") == "" || getCookie("latitude") == "") {
         return {
             longitude: 47.49835,
