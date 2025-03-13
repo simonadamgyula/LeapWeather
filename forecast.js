@@ -64,7 +64,7 @@ function getDate() {
 function reloadData() {
     const date = getDate();
     console.log(date)
-    getWeatherForDay(getLoaction(), date, { daily: ["temperature_2m_max", "temperature_2m_min", "apparent_temperature_min", "apparent_temperature_max", "sunrise", "sunset", "uv_index_max", "precipitation_sum", "precipitation_probability_max"] })
+    getWeatherForDay(getLocation(), date, { daily: ["temperature_2m_max", "temperature_2m_min", "apparent_temperature_min", "apparent_temperature_max", "sunrise", "sunset", "uv_index_max", "precipitation_sum", "precipitation_probability_max", "weather_code"] })
         .then(data => {
             cityElement.innerText = getCity();
             temperatureElement.innerText = `${data.daily.temperature_2m_min} ${data.daily_units.temperature_2m_min} / ${data.daily.temperature_2m_max} ${data.daily_units.temperature_2m_max}`;
@@ -75,6 +75,8 @@ function reloadData() {
             sunsetElement.innerHTML = `<p>${new Date(data.daily.sunset).toLocaleTimeString("hu-HU", { hour: "2-digit", minute: "2-digit" })}</p>`;
 
             uvElement.innerHTML = `<p>${data.daily.uv_index_max} ${data.daily_units.uv_index_max}</p>`;
+
+            WeatherIcon(data.daily.weather_code);
         })
         .catch(error => console.log(error));
 

@@ -59,7 +59,7 @@ searchBar.onblur = function () {
 }
 
 function reloadData() {
-    getWeatherForDay(getLoaction(), undefined, { current: ["temperature_2m", "relative_humidity_2m", "apparent_temperature", "wind_speed_10m", "wind_direction_10m", "uv_index", "weather_code"] })
+    getWeatherForDay(getLocation(), undefined, { current: ["temperature_2m", "relative_humidity_2m", "apparent_temperature", "wind_speed_10m", "wind_direction_10m", "uv_index", "weather_code"] })
         .then(data => {
             cityElement.innerText = getCity();
             temperatureElement.innerText = `${data.current.temperature_2m} ${data.current_units.temperature_2m}`;
@@ -73,7 +73,7 @@ function reloadData() {
         })
         .catch(error => console.log(error))
 
-    getForecast(getLoaction(), 7, { daily: ["temperature_2m_max", "temperature_2m_min", "weather_code"] })
+    getForecast(getLocation(), 7, { daily: ["temperature_2m_max", "temperature_2m_min", "weather_code"] })
         .then(data => {
             forecastCardContainer.innerHTML = "";
 
@@ -85,7 +85,7 @@ function reloadData() {
                             <p>${weekdayLookup[date.getDay()]}</p>
                         </div>
                         <div class="card_pic">
-                            <img src="pictures/sun_placeholder.jpg">
+                            <img src="${iconByWeatherCode(data.daily.weather_code[i])}" alt="weather_icon">
                         </div>
                         <div class="card_temperature">
                             <p>${data.daily.temperature_2m_min[i]}${data.daily_units.temperature_2m_min} / ${data.daily.temperature_2m_max[i]}${data.daily_units.temperature_2m_max}</p>
@@ -95,40 +95,6 @@ function reloadData() {
         })
 
     createGraphs(new Date());
-}
-
-
-function WeatherIcon(weatherCode) {
-    const today = new Date();
-    let weather_icon = document.getElementById("weather_icon");
-    const background = document.querySelector("body");
-    let isNight = false;
-
-    console.log(weather_icon);
-    if (weatherCode==0 && today.getHours() >= 18 || weatherCode == 0 && today.getHours() < 5) {
-        weather_icon.src = "pictures/ready_for_use/hold.png";
-        isNight = true;
-        background.style.backgroundImage = "url('pictures/ready_for_use/hold.png')";
-    }
-    if (weatherCode==0) {
-        weather_icon.src = "pictures/ready_for_use/nap.png"; 
-        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }clear.png')`;
-    } else if (weatherCode==28||40<=weatherCode<=49) {
-        weather_icon.src = "pictures/ready_for_use/cloud.png";
-        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }cloudy.png')`;
-    } else if (weatherCode==20 || weatherCode==21 || weatherCode==23 || weatherCode==24 || 50<=weatherCode<=69) {
-        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }rain.png')`;
-        weather_icon.src = "pictures/ready_for_use/rain.png";
-    } else if (weatherCode==25||weatherCode==28||80<=weatherCode<=99) {
-        weather_icon.src = "pictures/ready_for_use/storm.png";
-        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }storm.png')`;
-    } else if (weatherCode==26||weatherCode==27||70<=weatherCode<=79) {
-        weather_icon.src = "pictures/ready_for_use/snow.png";
-        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }snow.png')`;
-    } else {
-        weather_icon.src = "pictures/ready_for_use/nap.png";
-        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }clear.png')`;
-    }
 }
 
 
