@@ -1,8 +1,3 @@
-const position = {
-    latitude: 47.6116,
-    longitude: 17.2501
-}
-
 const weatherVariables = {
     hourly: ["temperature_2m", "precipitation"],
 }
@@ -10,16 +5,16 @@ const weatherVariables = {
 let precipitationChartInstance;
 
 function createGraphs(date) {
-getWeatherForDay(position, date, weatherVariables)
-    .then(data => {
-        const hourlyData = data.hourly;
+    getWeatherForDay(getLocation(), date, weatherVariables)
+        .then(data => {
+            const hourlyData = data.hourly;
 
-        makeTemperatureGraph(hourlyData.time, hourlyData.temperature_2m);
-        makePrecipitationGraph(hourlyData.time, hourlyData.precipitation);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+            makeTemperatureGraph(hourlyData.time, hourlyData.temperature_2m);
+            makePrecipitationGraph(hourlyData.time, hourlyData.precipitation);
+        })
+        .catch(error => {
+            console.error(error);
+        });
 }
 
 
@@ -64,13 +59,13 @@ function makeTemperatureGraph(times, temperatures) {
 function makePrecipitationGraph(times, precipitations) {
     const timeValues = times.map(time => new Date(time).toLocaleTimeString("hu-HU", { hour: "numeric", minute: "2-digit" }));
     const hasPrecipitation = precipitations.some(p => p > 0);
-    
-    if(!hasPrecipitation){
-        document.getElementById("precipitation_diagram").style.display = "none"; 
-        document.getElementById("no_precipitation_message").style.display = "block"; 
+
+    if (!hasPrecipitation) {
+        document.getElementById("precipitation_diagram").style.display = "none";
+        document.getElementById("no_precipitation_message").style.display = "block";
         return;
     }
-    else{
+    else {
         document.getElementById("precipitation_diagram").style.display = "block";
         document.getElementById("no_precipitation_message").style.display = "none";
     }
