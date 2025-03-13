@@ -33,13 +33,13 @@ function WeatherIcon(weatherCode) {
 function iconByWeatherCode(weatherCode) {
     if (weatherCode == 0) {
         return "pictures/ready_for_use/nap.png";
-    } else if (weatherCode == 28 || 40 <= weatherCode <= 49) {
+    } else if (weatherCode == 28 || 40 <= weatherCode && weatherCode <= 49) {
         return "pictures/ready_for_use/cloud.png";
-    } else if (weatherCode == 20 || weatherCode == 21 || weatherCode == 23 || weatherCode == 24 || 50 <= weatherCode <= 69) {
+    } else if (weatherCode == 20 || weatherCode == 21 || weatherCode == 23 || weatherCode == 24 || 50 <= weatherCode && weatherCode <= 69) {
         return "pictures/ready_for_use/rain.png";
-    } else if (weatherCode == 25 || weatherCode == 28 || 80 <= weatherCode <= 99) {
+    } else if (weatherCode == 25 || weatherCode == 28 || 80 <= weatherCode && weatherCode <= 99) {
         return "pictures/ready_for_use/storm.png";
-    } else if (weatherCode == 26 || weatherCode == 27 || 70 <= weatherCode <= 79) {
+    } else if (weatherCode == 26 || weatherCode == 27 || 70 <= weatherCode && weatherCode <= 79) {
         return "pictures/ready_for_use/snow.png";
     } else {
         return "pictures/ready_for_use/nap.png";
