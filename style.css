@@ -12,6 +12,8 @@ body {
     gap: 50px;
     background-color: #212121;
     font-family: 'Inter', sans-serif;
+    background-size: cover;
+    background-repeat: repeat-y;
 }
 
 a {
@@ -40,6 +42,9 @@ a {
 
 .nav li {
     position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .nav li a {
@@ -60,7 +65,6 @@ a {
     text-align: center;
     justify-self: flex-end;
     border-radius: 0.4em;
-    margin-right: 4em;
     height: 1.6em;
     width: 16em;
     border: none;
@@ -80,7 +84,7 @@ a {
 .content {
     width: 66vw;
     box-sizing: border-box;
-    background-color: #2d2d2d;
+    background-color: rgba(45, 45, 45, 0.8);
     border-radius: 40px;
     color: white;
 }
@@ -111,6 +115,19 @@ a {
     font-size: 48px;
     font-weight: bolder;
     margin: 0;
+}
+
+.temperature_wrapper {
+    font-size: 16px;
+    color: #cbcbcb;
+}
+
+.temperature_wrapper>#temperature {
+    font-size: 64px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    padding-top: 5px;
 }
 
 .details_right {
@@ -263,10 +280,7 @@ a {
 }
 
 body {
-    background-image: url(pictures/ready_for_use/day_rain.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: fixed;
+
 }
   
 .temperature_wrapper {
@@ -331,6 +345,16 @@ canvas {
 
 
 @media screen and (max-width: 767px) {
+    .nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    body {
+        padding-top: calc(160px + 3.125em);
+    }
+
     .details_left>h2 {
         font-size: 2.5em;
     }
