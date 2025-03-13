@@ -7,6 +7,8 @@ const weatherVariables = {
     hourly: ["temperature_2m", "precipitation"],
 }
 
+let precipitationChartInstance;
+
 function createGraphs(date) {
 getWeatherForDay(position, date, weatherVariables)
     .then(data => {
@@ -61,8 +63,23 @@ function makeTemperatureGraph(times, temperatures) {
  */
 function makePrecipitationGraph(times, precipitations) {
     const timeValues = times.map(time => new Date(time).toLocaleTimeString("hu-HU", { hour: "numeric", minute: "2-digit" }));
+    const hasPrecipitation = precipitations.some(p => p > 0);
+    
+    if(!hasPrecipitation){
+        document.getElementById("precipitation_diagram").style.display = "none"; 
+        document.getElementById("no_precipitation_message").style.display = "block"; 
+        return;
+    }
+    else{
+        document.getElementById("precipitation_diagram").style.display = "block";
+        document.getElementById("no_precipitation_message").style.display = "none";
+    }
 
-    new Chart("precipitation-chart", {
+    if (precipitationChartInstance) {
+        precipitationChartInstance.destroy();
+    }
+
+    precipitationChartInstance = new Chart("precipitation-chart", {
         type: "bar",
         data: {
             labels: timeValues,
