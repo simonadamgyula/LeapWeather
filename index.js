@@ -87,11 +87,7 @@ function reloadData() {
             windDirectionElement.innerHTML = `<p>${data.current.wind_direction_10m}${data.current_units.wind_direction_10m} <object style="--direction: ${data.current.wind_direction_10m}deg" class="wind_arrow" data="/pictures/arrow.svg" type="image/svg+xml"></object></p>`;
             uvElement.innerHTML = `<p>${data.current.uv_index} ${data.current_units.uv_index}</p>`;
             
-            
-            var x = data.current.weather_code;
-            console.log(data.current.weather_code);
-            
-            console.log(x);
+            WeatherIcon(data.current.weather_code);
         })
         .catch(error => console.log(error))
 
@@ -117,35 +113,36 @@ function reloadData() {
 }
 
 
-
-function startTime() {
+function WeatherIcon(weatherCode) {
     const today = new Date();
-    var h = today.getHours();
-    let m = today.getMinutes();
-    let s = today.getSeconds();
-    m = checkTime(m);
-    s = checkTime(s);
-    setTimeout(startTime, 1000);
-}
-
-
-function WeatherIcon() {
     let weather_icon = document.getElementById("weather_icon");
+    const background = document.querySelector("body");
+    let isNight = false;
+
     console.log(weather_icon);
-    if (x==0 && h >= 18 || x == 0 && h < 5) {
+    if (weatherCode==0 && today.getHours() >= 18 || weatherCode == 0 && today.getHours() < 5) {
         weather_icon.src = "pictures/ready_for_use/hold.png";
-    } else if (x==0) {
-        weather_icon.src = "pictures/ready_for_use/nap.png";
-    } else if (x==28||40<=x<=49) {
+        isNight = true;
+        background.style.backgroundImage = "url('pictures/ready_for_use/hold.png')";
+    }
+    if (weatherCode==0) {
+        weather_icon.src = "pictures/ready_for_use/nap.png"; 
+        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }clear.png')`;
+    } else if (weatherCode==28||40<=weatherCode<=49) {
         weather_icon.src = "pictures/ready_for_use/cloud.png";
-    } else if (x==20 || x==21 || x==23 || x==24 || 50<=x<=69) {
+        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }cloudy.png')`;
+    } else if (weatherCode==20 || weatherCode==21 || weatherCode==23 || weatherCode==24 || 50<=weatherCode<=69) {
+        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }rain.png')`;
         weather_icon.src = "pictures/ready_for_use/rain.png";
-    } else if (x==25||x==28||80<=x<=99) {
+    } else if (weatherCode==25||weatherCode==28||80<=weatherCode<=99) {
         weather_icon.src = "pictures/ready_for_use/storm.png";
-    } else if (x==26||x==27||70<=x<=79) {
+        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }storm.png')`;
+    } else if (weatherCode==26||weatherCode==27||70<=weatherCode<=79) {
         weather_icon.src = "pictures/ready_for_use/snow.png";
+        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }snow.png')`;
     } else {
         weather_icon.src = "pictures/ready_for_use/nap.png";
+        background.style.backgroundImage = `url('pictures/ready_for_use/${isNight ? "night_" : "day_" }clear.png')`;
     }
 }
 
